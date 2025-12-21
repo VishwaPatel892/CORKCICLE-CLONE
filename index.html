@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Corkcicle Clone</title>
+
+  <style>
+    /* --- Global Styles & Resets --- */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #1a1a1a;
+      background: #fff;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* --- Top Banner --- */
+    .top-banner {
+      background-color: #FFFDE7;
+      text-align: center;
+      padding: 10px 0;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    /* --- Navbar --- */
+    .main-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      border-bottom: 1px solid #EAEAEA;
+      background-color: #FFFFFF;
+    }
+
+    .nav-left .logo {
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+
+    .nav-center ul {
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-center a {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-right ul {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .nav-right a {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    /* --- Categories --- */
+    .product-categories {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .category-item {
+          
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      width: 110px;
+    }
+
+    .category-item img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      margin-bottom: 15px;
+    }
+
+    .category-item p {
+      font-size: 14px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    /* --- Hero Banner --- */
+    .hero-banner {
+      background-image: url('https://corkcicle.com/cdn/shop/files/HP_Hero_Desktop_2.jpg?v=1762464219&width=1920');
+      background-size: cover;
+      background-position: center;
+      height: 70vh;
+      min-height: 450px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .hero-content h1 {
+      font-size: 5.5rem;
+      color: #fff;
+      font-weight: 700;
+      line-height: 1.1;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    /* --- Product Sections --- */
+    .section-header {
+      text-align: center;
+      margin: 40px 0 20px;
+    }
+
+    .section-header h2 {
+      font-size: 24px;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    .product-grid {
+      display: flex;
+      justify-content: space-between;
+      gap: 25px;
+
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .product-card {
+    
+      background-color: #f9f9f9;
+      border: 1px solid #eee;
+      text-align: left;
+      transition: transform 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .product-image-container img {
+      width: 100%;
+      display: block;
+    }
+
+    .product-info {
+      padding: 15px;
+    }
+
+    .product-name {
+      font-size: 14px;
+      font-weight: 600;
+      margin: 8px 0;
+    }
+
+    .price {
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .price .original-price {
+      text-decoration: line-through;
+      color: #888;
+      font-weight: normal;
+      margin-left: 5px;
+    }
+
+    /* --- Carousel --- */
+    .product-carousel {
+      display: flex;
+      overflow-x: auto;
+      gap: 10px;
+      padding: 20px;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .product-card img{
+      width: 300px;
+    }
+
+
+    .carousel-arrows {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .carousel-arrows button {
+      background-color: #000;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      font-size: 16px;
+      cursor: pointer;
+      margin: 0 5px;
+    }
+
+    /* --- Collabs Section --- */
+    .collabs {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .collabs h2 {
+      font-size: 20px;
+      letter-spacing: 1px;
+      margin-bottom: 30px;
+    }
+
+    .brand-logos {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 140px;
+      flex-wrap: wrap;
+      animation: slider 10s linear infinite;
+
+    }
+
+    @keyframes slider{
+      0%{
+          transform: translateX(0);
+      }
+     100%{
+      transform: translateX(-500px);
+     }
+        
+    }
+
+    .brand-logos img {
+      height: 40px;
+      object-fit: contain;
+      filter: grayscale(100%);
+    }
+
+    /* --- Espresso Section --- */
+    .espresso {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .espresso h2 {
+      font-size: 22px;
+      letter-spacing: 2px;
+      margin-bottom: 40px;
+    }
+
+    .espresso .product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  justify-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+
+    }
+.espresso .product {
+  width: 100%;
+  max-width: 280px;
+  transition: transform 0.3s ease;
+}
+
+.espresso .product img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.espresso .product:hover img {
+  transform: scale(1.05);
+}
+
+    /* --- Footer --- */
+    .footer {
+      background-color: #000;
+      color: #fff;
+      padding: 50px 5%;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 40px;
+    }
+
+    .footer-column h4 {
+      margin-bottom: 15px;
+      font-size: 13px;
+    }
+
+    .footer-column ul {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .footer-column  {
+      color: #fff;
+      opacity: 0.8;
+      transition: opacity 0.2s;
+    }
+
+    .footer-column a:hover {
+      opacity: 1;
+    }
+
+    .footer .copyright {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 10px;
+      opacity: 0.6;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="top-banner">
+      <p>Spend $55, Get Free Shipping</p>
+    </div>
+
+    <nav class="main-nav">
+      <div class="nav-left">
+        <a href="#" class="logo">CORKCICLE.</a>
+      </div>
+      <div class="nav-center">
+        <ul>
+          <li><a href="./index.html">COLLABS +</a></li>
+          <li><a href="./new.html">DRINKWARE +</a></li>
+          <li><a href="./index3.html">COOLERS & BAGS +</a></li>
+          <li><a href="#">BARWARE & COFFEE +</a></li>
+          <li><a href="#">SALE</a></li>
+        </ul>
+      </div>
+      <div class="nav-right"></div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="product-categories">
+      <div class="category-item">
+        <img src="https://corkcicle.com/cdn/shop/files/DIS2830DP-A_pdp-1_757a3464-a633-4802-bad2-6c180d0a0e4e.png?v=1760643445&width" alt="New Arrivals">
+        <p>New Arrivals</p>
+      </div>
+      <div class="category-item">
+        <img src="https://corkcicle.com/cdn/shop/files/2224PPP-01.png?v=1761682250&width=1920" alt="Best Sellers">
+        <p>Best Sellers</p>
+      </div>
+      <div class="category-item">
+        <img src="https://corkcicle.com/cdn/shop/files/RP2516GCC-01_7cdc00c1-cd1d-4de7-8d3c-4ce6f15b4d3d.png?v=1743187751&width=1920" alt="Collabs">
+        <p>Collabs</p>
+      </div>
+      <div class="category-item">
+        <img src="https://corkcicle.com/cdn/shop/files/2020MM-01_152b4c9d-d61c-4348-b224-149f217c1917.png?v=1758049875&width=1920" alt="Sport Canteen">
+        <p>Sport Canteen</p>
+      </div>
+      <div class="category-item">
+        <img src="https://corkcicle.com/cdn/shop/files/2240SRU-1_d6910677-1bc4-4040-ba80-5492b536e3fe.png?v=1757692278&width=1920" alt="Straw Cups">
+        <p>Straw Cups</p>
+      </div>
+      <div class="category-item">
+        <img src="https://corkcicle.com/cdn/shop/files/5606PTTC-01.png?v=1757598099&width=1920" alt="Coffee">
+        <p>Coffee</p>
+      </div>
+      <div class="category-item">
+        <img src="https://corkcicle.com/cdn/shop/files/sling_black_with_canteen.png?v=1633971535&width=1920" alt="Sling">
+        <p>Sling</p>
+      </div>
+    </section>
+
+    <section class="hero-banner">
+      <div class="hero-content">
+      </div>
+    </section>
+    
+    <section class="espresso">
+      <h2></h2>
+      <div class="product-grid">
+        <div class="product">
+          <img src="https://corkcicle.com/cdn/shop/files/27_a539f637-dc74-4914-9603-62a9f8f3146c.jpg?v=1762265788&width=1920" alt="Pure Taste Collection">
+          <p><strong>GIFTS FOR THE COFFEE LOVER</strong></p>
+        </div>
+        <div class="product">
+          <img src="https://corkcicle.com/cdn/shop/files/28_99c2a059-b649-4a12-88aa-392225ecd53c.jpg?v=1762265781&width=1920" alt="Double-Walled Glassware">
+          <p><strong>GIFTS FOR THE CHARACTER-OBSESSED</strong></p>
+        </div>
+        <div class="product">
+          <img src="https://corkcicle.com/cdn/shop/files/29_86e90748-b11b-461e-b8a5-3ce848d57e4d.jpg?v=1762265775&width=1920" alt="Commuter Cup">
+          <p><strong>GIFTS FOR THE COCKTAIL CONNOISSEUR</strong></p>
+        </div>
+        <div class="product">
+          <img src="https://corkcicle.com/cdn/shop/files/30_40a65756-38a3-47fe-87c7-7b1dca076c53.jpg?v=1762265758&width=1920" alt="Palmpress">
+          <p><strong>GIFTS FOR THE ADVENTURER</strong></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="product-section new-arrivals">
+      <header class="section-header">
+        <h2>NEW ARRIVALS</h2>
+      </header>
+
+      <div class="product-grid">
+        <a href="#" class="product-card">
+          <div class="product-image-container">
+            <img src="https://corkcicle.com/cdn/shop/files/Patronus_Organic_Social_Square_1.png?v=1762530130&width=1920" alt="">
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">HARRY POTTER™ CRUISERS</h3>
+          </div>
+        </a>
+        
+
+        <a href="#" class="product-card">
+          <div class="product-image-container">
+            <img src="https://corkcicle.com/cdn/shop/files/CafeStacker_Lifestyle_1.png?v=1758049958&width=1024" alt="">
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">CAFE STACKERS</h3>
+          </div>
+        </a>
+
+                <a href="#" class="product-card">
+          <div class="product-image-container">
+            <img src="https://corkcicle.com/cdn/shop/files/pricklypear_homepage-hero--mobile.jpg?v=1754510519&width=1920" alt="">
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">PRICKLY PEAR</h3>
+          </div>
+        </a>
+
+
+                <a href="#" class="product-card">
+          <div class="product-image-container">
+            <img src="https://corkcicle.com/cdn/shop/files/DIS2830DP-B_DIS2222DP-B_lifestyle_2.jpg?v=1756817375&width=1024" alt="">
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">DISNEY'S  ARIEL & BELLE</h3>
+          </div>
+        </a>
+
+
+    </section>
+
+    <section class="product-section">
+      <header class="section-header">
+        <h2>SHOP BEST SELLERS</h2>
+      </header>
+
+      <div class="carousel-arrows">
+        <button aria-label="Previous">&lt;</button>
+        <button aria-label="Next">&gt;</button>
+      </div>
+
+      <div class="product-carousel">
+        <div class="product-card">
+          <img src="https://corkcicle.com/cdn/shop/files/2240SIB-01.png?v=1757692278&width=664" alt="">
+          <div class="product-info">
+            <div class="rating">★★★★★</div>
+            <h3 class="product-name">CRUISER</h3>
+            <div class="price">$39.95</div>
+          </div>
+        </div>
+        <div class="product-card">
+          <img src="https://corkcicle.com/cdn/shop/files/2830RDR-01.png?v=1760470255&width=664" alt="Rifle Paper Co. Sport Canteen">
+          <div class="product-info">
+            <div class="rating">★★★★</div>
+            <h3 class="product-name">GO CUP XL</h3>
+            <div class="price">$35.00</div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img src="https://corkcicle.com/cdn/shop/files/92S-W25-L-01.png?v=1760555376&width=664">
+            <div class="rating">★★★★</div>
+            <h3 class="product-name">SLING</h3>
+            <div class="price">$59.95</div>
+          </div>
+      
+        
+
+        <div class="product-card">
+          <img src="https://corkcicle.com/cdn/shop/files/2020RTW-01.png?v=1756820298&width=664">
+          <div class="product-info">
+            <div class="rating">★★★★</div>
+            <h3 class="product-name">SERIES A SPORT CANTEEN</h3>
+            <div class="price">$39.95</div>
+          </div>
+        </div>        
+
+
+        <div class="product-card">
+          <img src="https://corkcicle.com/cdn/shop/files/2241RDR-01.png?v=1757006417&width=664">
+          <div class="product-info">
+            <div class="rating">★★★★★</div>
+            <h3 class="product-name">SIERRA LEAKPROOF CRUISER</h3>
+            <div class="price">$34.95</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+ 
+
+
+
+
+    <section class="collabs">
+      <h2>GIFTS FOR THE HYDRATION OBSESSED</h2>
+      <div class="brand-logos">
+        <img src="https://corkcicle.com/cdn/shop/files/harry-potter-logo-8_600x.png?v=1736440417" alt="Harry Potter">
+        <img src="https://corkcicle.com/cdn/shop/files/disney-logo-8_600x.png?v=1735825124" alt="Disney">
+        <img src="https://corkcicle.com/cdn/shop/files/starbucks-logo-8_600x.png?v=1735825124" alt="Starbucks">
+        <img src="https://corkcicle.com/cdn/shop/files/kith-logo-8_600x.png?v=1735825124" alt="KITH">
+        <img src="https://corkcicle.com/cdn/shop/files/athleta-logo-8_600x.png?v=1735825124" alt="Athleta">
+        <img src="https://corkcicle.com/cdn/shop/files/ritz_carlton_logo_600x.jpg?v=1735843314">
+        
+ 
+      </div>
+    </section>
+
+    <section class="espresso">
+      <h2>ESPRESSO YOURSELF</h2>
+      <div class="product-grid">
+        <div class="product">
+          <img src="https://corkcicle.com/cdn/shop/files/pure-taste-mug-100.jpg?v=1735824963&width=1440" alt="Pure Taste Collection">
+          <p><strong>PURE TASTE COLLECTION</strong></p>
+        </div>
+        <div class="product">
+          <img src="https://corkcicle.com/cdn/shop/files/glass-mug-pour-100.jpg?v=1735824963&width=1440" alt="Double-Walled Glassware">
+          <p><strong>DOUBLE-WALLED GLASSWARE</strong></p>
+        </div>
+        <div class="product">
+          <img src="https://corkcicle.com/cdn/shop/files/commuter-cup-pour-100.jpg?v=1735824963&width=1440" alt="Commuter Cup">
+          <p><strong>COMMUTER CUP</strong></p>
+        </div>
+
+         <div class="product">
+          <img src="https://corkcicle.com/cdn/shop/files/2block_palmpress_4d95c40d-4370-4cd8-b18b-9bdcc677e26a.jpg?v=1736429070&width=1920">
+          <p><strong>PALMPRESS</strong></p>
+        </div>
+      </div>
+      
+
+
+      
+     
+    </section>
+  </main>
+
+     <footer class="footer">
+        <div class="footer-container">
+
+            <div class="footer-column">
+                <h4>COMPANY</h4>
+                <ul>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Charity: Water</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Use</a></li>
+                    <li><a href="#">Patents</a></li>
+                    <li><a href="#">Site Map</a></li>
+                    <li><a href="#">Media Kit</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>SUPPORT</h4>
+                <ul>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Shipping</a></li>
+                    <li><a href="#">Returns</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Student Discount</a></li>
+                    <li><a href="#">Affiliates</a></li>
+                    <li><a href="#">Accessibility</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>SHOP</h4>
+                <ul>
+                    <li><a href="#">New Arrivals</a></li>
+                    <li><a href="#">Best Sellers</a></li>
+                    <li><a href="#">Gift Cards</a></li>
+                    <li><a href="#">Store Locator</a></li>
+                    <li><a href="#">Promos & Exclusions</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>WHOLESALE</h4>
+                <ul>
+                    <li><a href="#">Domestic</a></li>
+                    <li><a href="#">International</a></li>
+                    <li><a href="#">Custom Orders</a></li>
+                    <li><a href="#">Fundraisers</a></li>
+                </ul>
+
+
+            </div>
+        </div>
+
+        <p class="copyright">©2025 CORKCICLE.</p>
+    </footer>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
