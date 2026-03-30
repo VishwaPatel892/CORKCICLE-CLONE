@@ -1,3 +1,118 @@
-# CORKCICLE-CLONE
+# 🧊 CORKCICLE WEBSITE
 
-This project is a clone of the Corkcicle website created using HTML and CSS to strengthen my understanding of web development and UI design. It includes three pages—Home, Canteen, and New Arrivals—connected using anchor (<a>) tags. The project also features CSS animations along with clean layouts, product grids, and hover effects to enhance user interaction and overall visual appeal.
+This project is a multi-page e-commerce website inspired by Corkcicle, featuring product-focused pages such as Drinkware, Accessories, and Collections. The website is designed with a modern UI, smooth navigation, and interactive elements like hover effects to enhance user experience.
+
+---
+
+## 🔗 Live Demo
+
+https://your-corkcicle-site-link.netlify.app/
+
+https://your-demo-video-link
+
+---
+
+## ✨ Features
+
+- Multi-page website (Home, Drinkware, Accessories, Collections)
+- Smooth navigation across all pages
+- Product showcase with hover effects
+- Clean and modern UI design
+- Fully responsive (mobile + desktop)
+- Fast and lightweight static website
+
+---
+
+## 🚀 What Makes This Project Stand Out
+
+- Clean and organized file structure
+- Inspired by real-world premium brand UI
+- Focus on aesthetics and user experience
+- Beginner-friendly and scalable
+- Easy to extend with backend features
+
+---
+
+## 📁 Project Structure
+
+- index.html — Home page  
+- drinkware.html — Drinkware page  
+- accessories.html — Accessories page  
+- collections.html — Collections page  
+- README.md — Documentation  
+
+---
+
+## 🛠 Tech Stack
+
+- HTML5  
+- CSS3  
+- JavaScript  
+- Netlify (Deployment)  
+
+---
+
+## 💻 How to Run Locally
+
+1. Clone the repository:  
+   https://github.com/your-username/corkcicle-clone  
+
+2. Navigate to the project folder:  
+   cd corkcicle-clone  
+
+3. Run the project:  
+   Open index.html in your browser  
+
+---
+
+## 🔮 Future Improvements
+
+- Add shopping cart functionality  
+- Implement login and signup system  
+- Add product filtering and search  
+- Connect to backend (Node.js / Firebase)  
+- Integrate payment gateway  
+
+---
+
+## ⚡ Possible Tech Upgrades
+
+- React.js for frontend  
+- Node.js + Express for backend  
+- MongoDB for database  
+- Stripe for payments  
+
+---
+
+## 🤝 Contributing
+
+1. Fork the repository  
+2. Create a new branch  
+   git checkout -b feature/your-feature-name  
+3. Commit your changes  
+   git commit -m "Add your feature"  
+4. Push to your branch  
+   git push origin feature/your-feature-name  
+5. Open a Pull Request  
+
+---
+
+## 🌟 Project Highlights
+
+- Built as a real-world frontend practice project  
+- Clean, readable, and maintainable code  
+- Portfolio-ready project  
+- Easily extendable for full-stack development  
+
+---
+
+## 📜 License
+
+This project is for educational purposes only.
+
+---
+
+## 🙌 Acknowledgements
+
+- Inspired by the original Corkcicle website  
+- Design ideas from modern e-commerce platforms  
